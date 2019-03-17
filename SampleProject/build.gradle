@@ -10,25 +10,11 @@
 apply plugin: 'java-library'
 //apply plugin: 'application'
 //apply plugin: 'eclipse'
-
-buildscript {
-    repositories {
-        maven {
-            url 'http://localhost:8081/artifactory/plugins-release'
-            
-        }
-        
-    }
-    dependencies {
-        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.0.3"
-    }
-}
-
+/*
 allprojects {
     apply plugin: "com.jfrog.artifactory"
-}
-
+}**/
+/*
 artifactory {
     contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
@@ -45,22 +31,27 @@ artifactory {
             
         }
     }
-}
+}*/
 
 // In this section you declare where to find the dependencies of your project
-repositories {
+//repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     //jcenter()
-    mavenCentral()
-}
+   // mavenCentral()
+   repositories {
+        maven {
+            url 'http://localhost:8081/artifactory/plugins-release'
+            
+        }
+//}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
+    //api 'org.apache.commons:commons-math3:3.6.1'
     
     // https://mvnrepository.com/artifact/org.apache.poi/poi
 	compile group: 'org.apache.poi', name: 'poi', version: '3.17'
@@ -82,10 +73,10 @@ dependencies {
 	
 	
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:23.0'
+    //implementation 'com.google.guava:guava:23.0'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    //testImplementation 'junit:junit:4.12'
 }
 
 jar {
@@ -102,4 +93,4 @@ jar {
     }
     
 
-
+}
